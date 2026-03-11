@@ -302,14 +302,14 @@ export const Projects = () => {
       tech: "Next.js, FastAPI, PyTorch, XGBoost, TypeScript, MongoDB",
       description: "Architected a hybrid CNN-Ensemble model (EfficientNetB0 + XGBoost) with 99.2% accuracy for automated industrial quality control.",
       image: "/nanoscan.png",
-      links: { github: "#", live: "#" }
+      links: { github: "https://github.com/SHAN0945/NanoScan" , live: "https://huggingface.co/spaces/SHAN0945/nanoscan-api/tree/main" }
     },
     {
       title: "SafeTrail: AI-Powered Travel Safety Platform",
       tech: "Next.js, React, Tailwind CSS, Scikit-learn, Python",
       description: "Built a real-time navigation system using DBSCAN clustering to process historical safety data and identify high-risk hotspots.",
       image: "/safetrail.png",
-      links: { github: "#" }
+      links: { github: "https://github.com/SHAN0945/SafeTrail" }
     },
     {
       title: "Sooru Flow: Promotional Website",
@@ -323,28 +323,28 @@ export const Projects = () => {
       tech: "Python, Scikit-learn, Pandas, Tweepy, XGBoost, NumPy",
       description: "Built a machine learning pipeline using XGBoost and NLP (VADER/NLTK) to predict stock trends by correlating Twitter sentiment with historical market data.",
       image: "/stock.png",
-      links: { github: "#" }
+      links: { github: "https://github.com/SHAN0945/stock-prediction-with-twitter-sentiment-analysis" }
     },
     {
       title: "Tailored Cover Letter Generator",
       tech: "Streamlit, Gemini API, PyPDF2",
       description: "Built a tool to generate customized cover letters using advanced AI APIs and PDF parsing.",
       image: "/coverletter.png",
-      links: { github: "#" }
+      links: { github: "https://github.com/SHAN0945/Tailored-CoverLetter-Generator" }
     },
     {
       title: "Nutritrack",
       tech: "MongoDB, Express, AngularJS, NodeJS, JavaScript",
       description: "Full stack web application that helps users track their food and water intake, calories, book appointments, and set diet goals.",
       image: "/nutritrack.png",
-      links: { github: "#" }
+      links: { github: "https://github.com/SHAN0945/NutriTrack" }
     },
     {
       title: "Gaussian Blurring Analysis",
       tech: "Python, OpenCV, Multiprocessing modules",
       description: "Demonstrated how parallelization significantly improves computational efficiency and performance for image processing tasks.",
       image: "/cao.png",
-      links: { github: "#" }
+      links: { github: "https://github.com/SHAN0945/Gaussian-Blur-Project" }
     }
   ];
 
@@ -385,11 +385,11 @@ export const Projects = () => {
                   ))}
                 </div>
                 <div className="flex space-x-4">
-                  <a href={project.links.github} className="text-zinc-500 hover:text-white transition-colors">
+                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">
                     <Github className="w-5 h-5" />
                   </a>
                   {project.links.live && (
-                    <a href={project.links.live} className="text-zinc-500 hover:text-indigo-400 transition-colors">
+                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-400 transition-colors">
                       <ExternalLink className="w-5 h-5" />
                     </a>
                   )}
