@@ -136,9 +136,17 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative h-[400px]"
+            className="relative h-[400px] flex items-center justify-center"
           >
-            <TechAnimation />
+            <div className="relative w-72 h-72 md:w-96 md:h-96">
+              <div className="absolute inset-0 bg-indigo-500/20 rounded-3xl rotate-6 blur-2xl"></div>
+              <img 
+                src="/shan4.jpeg" 
+                alt="Shashank Singh" 
+                className="relative z-10 w-full h-full object-cover rounded-3xl border border-zinc-800 shadow-2xl"
+                referrerPolicy="no-referrer"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -404,17 +412,19 @@ export const Projects = () => {
 };
 
 export const Leadership = () => {
-  const roles = [
-    {
-      title: "Chairperson",
-      org: "IEEE TEMS VIT",
-      period: "Dec 2025 – Present",
-      points: [
-        "Directing a chapter of 100+ members, managing project timelines and budget allocation.",
-        "Increased student engagement by 20% through a peer-to-peer mentorship framework.",
-        "Facilitated technical requirement gatherings between design and development teams."
-      ]
-    },
+  const chairperson = {
+    title: "Chairperson",
+    org: "IEEE TEMS VIT",
+    period: "Dec 2025 – Present",
+    image: "/chair.jpeg",
+    points: [
+      "Directing a chapter of 100+ members, managing project timelines and budget allocation.",
+      "Increased student engagement by 20% through a peer-to-peer mentorship framework.",
+      "Facilitated technical requirement gatherings between design and development teams."
+    ]
+  };
+
+  const otherRoles = [
     {
       title: "AI/ML & Design Mentor",
       org: "IEEE TEMS VIT",
@@ -423,6 +433,26 @@ export const Leadership = () => {
         "Taught weekly workshops on Figma and ML fundamentals to 50+ students.",
         "Resulted in 3 teams placing in the top 10 of campus hackathons.",
         "Performed code reviews and technical audits for 15+ student projects."
+      ]
+    },
+    {
+      title: "Gravitas'25 Events coordinator",
+      org: "VIT Vellore",
+      period: "September 2025",
+      points: [
+        "Gravitas is VIT's flagship tech fest with over 200 events.",
+        "Managed event logistics and coordinated with multiple teams,clubs and chapter for smooth execution.",
+        "Handled participant queries and ensured technical requirements were met."
+      ]
+    },
+    {
+      title: "Riviera'26 Events Coordinator",
+      org: "VIT Vellore",
+      period: "February 2026",
+      points: [
+        "Riviera is VIT's flagship cultural fest with over 150 events.",
+        "Coordinated cultural events and managed multiple events.",
+        "Worked on promotional activities and student outreach programs."
       ]
     }
   ];
@@ -434,27 +464,69 @@ export const Leadership = () => {
           <h2 className="text-3xl font-bold text-white mb-4">Leadership & Extra-Curriculars</h2>
           <div className="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {roles.map((role, idx) => (
+
+        {/* Chairperson - Horizontal Layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 p-8 bg-zinc-900 rounded-3xl border border-zinc-800 shadow-sm overflow-hidden group"
+        >
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="w-48 h-48 shrink-0">
+              <img 
+                src={chairperson.image} 
+                alt="Chairperson" 
+                className="w-full h-full object-cover rounded-2xl border border-zinc-800"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center mb-4">
+                <div className="p-3 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-900/20">
+                  <Users className="w-6 h-6" />
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-2xl font-bold text-white">{chairperson.title}</h3>
+                  <p className="text-indigo-400 font-medium">{chairperson.org}</p>
+                </div>
+              </div>
+              <p className="text-sm text-zinc-500 mb-4 font-medium">{chairperson.period}</p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {chairperson.points.map((point, i) => (
+                  <li key={i} className="text-zinc-400 flex items-start">
+                    <Award className="w-4 h-4 mr-2 text-indigo-500 shrink-0 mt-1" />
+                    <span className="text-sm">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Other Roles - Vertical Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {otherRoles.map((role, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="p-8 bg-zinc-900 rounded-3xl border border-zinc-800 shadow-sm relative overflow-hidden group"
+              transition={{ delay: idx * 0.1 }}
+              className="p-8 bg-zinc-900 rounded-3xl border border-zinc-800 shadow-sm relative overflow-hidden group flex flex-col"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-bl-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-              <div className="relative">
+              <div className="relative flex-1">
                 <div className="flex items-center mb-6">
                   <div className="p-3 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-900/20">
                     <Users className="w-6 h-6" />
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-xl font-bold text-white">{role.title}</h3>
-                    <p className="text-indigo-400 font-medium">{role.org}</p>
+                    <h3 className="text-lg font-bold text-white leading-tight">{role.title}</h3>
+                    <p className="text-indigo-400 text-sm font-medium">{role.org}</p>
                   </div>
                 </div>
-                <p className="text-sm text-zinc-500 mb-6 font-medium">{role.period}</p>
+                <p className="text-xs text-zinc-500 mb-6 font-medium uppercase tracking-wider">{role.period}</p>
                 <ul className="space-y-3">
                   {role.points.map((point, i) => (
                     <li key={i} className="text-zinc-400 flex items-start">
