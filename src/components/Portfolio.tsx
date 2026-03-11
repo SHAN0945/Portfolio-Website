@@ -301,36 +301,49 @@ export const Projects = () => {
       title: "NanoScan: AI-Powered PCB Defect Detection",
       tech: "Next.js, FastAPI, PyTorch, XGBoost, TypeScript, MongoDB",
       description: "Architected a hybrid CNN-Ensemble model (EfficientNetB0 + XGBoost) with 99.2% accuracy for automated industrial quality control.",
+      image: "/nanoscan.png",
       links: { github: "#", live: "#" }
     },
     {
       title: "SafeTrail: AI-Powered Travel Safety Platform",
       tech: "Next.js, React, Tailwind CSS, Scikit-learn, Python",
       description: "Built a real-time navigation system using DBSCAN clustering to process historical safety data and identify high-risk hotspots.",
+      image: "/safetrail.png",
       links: { github: "#" }
+    },
+    {
+      title: "Sooru Flow: Promotional Website",
+      tech: "React, Three.js, Tailwind CSS, Framer Motion",
+      description: "Developed a high-performance promotional website for Sooru.AI, featuring interactive 3D visualizations and smooth scroll animations to showcase the company's core products.",
+      image: "/sooru.png",
+      links: { live: "https://sooru-flow.vercel.app/" }
     },
     {
       title: "TweepStock: Stock prediction with twitter sentiment analysis",
       tech: "Python, Scikit-learn, Pandas, Tweepy, XGBoost, NumPy",
       description: "Built a machine learning pipeline using XGBoost and NLP (VADER/NLTK) to predict stock trends by correlating Twitter sentiment with historical market data.",
-      links: { github: "#" }
-    },
-    {
-      title: "Nutritrack",
-      tech: "MongoDB, Express, AngularJS, NodeJS, JavaScript",
-      description: "Full stack web application that helps users track their food and water intake, calories, book appointments, and set diet goals.",
-      links: { github: "#" }
-    },
-    {
-      title: "Gaussian Blurring Analysis",
-      tech: "Python, OpenCV, Multiprocessing modules",
-      description: "Demonstrated how parallelization significantly improves computational efficiency and performance for image processing tasks.",
+      image: "/stock.png",
       links: { github: "#" }
     },
     {
       title: "Tailored Cover Letter Generator",
       tech: "Streamlit, Gemini API, PyPDF2",
       description: "Built a tool to generate customized cover letters using advanced AI APIs and PDF parsing.",
+      image: "/coverletter.png",
+      links: { github: "#" }
+    },
+    {
+      title: "Nutritrack",
+      tech: "MongoDB, Express, AngularJS, NodeJS, JavaScript",
+      description: "Full stack web application that helps users track their food and water intake, calories, book appointments, and set diet goals.",
+      image: "/nutritrack.png",
+      links: { github: "#" }
+    },
+    {
+      title: "Gaussian Blurring Analysis",
+      tech: "Python, OpenCV, Multiprocessing modules",
+      description: "Demonstrated how parallelization significantly improves computational efficiency and performance for image processing tasks.",
+      image: "/cao.png",
       links: { github: "#" }
     }
   ];
@@ -354,7 +367,7 @@ export const Projects = () => {
             >
               <div className="h-48 bg-zinc-900 relative overflow-hidden">
                 <img 
-                  src={`https://picsum.photos/seed/${project.title}/600/400`} 
+                  src={project.image} 
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-100"
                   referrerPolicy="no-referrer"
