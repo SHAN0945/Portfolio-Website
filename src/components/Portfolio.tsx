@@ -11,7 +11,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent"
           >
-            SS.
+            SS
           </motion.span>
           <div className="hidden md:flex space-x-8">
             {['About', 'Skills', 'Experience', 'Projects', 'Leadership', 'Contact'].map((item) => (
