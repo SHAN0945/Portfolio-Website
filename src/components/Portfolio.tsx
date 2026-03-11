@@ -106,7 +106,7 @@ export const Hero = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="mailto:shashankssingh945@gmail.com"
+                href="#contact"
                 className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-full font-medium shadow-lg shadow-indigo-900/20 hover:bg-indigo-700 transition-all"
               >
                 <Mail className="w-4 h-4 mr-2" />
