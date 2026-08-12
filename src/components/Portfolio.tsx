@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, FileText, ExternalLink, Code2, Brain, Terminal, Award, Users, MapPin, Phone, Cpu, Database, Globe, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ExternalLink, Code2, Brain, Terminal, Award, Users, MapPin, Phone, Cpu, Database, Globe, Sparkles, Star } from "lucide-react";
 
 export const Navbar = () => {
   return (
@@ -100,7 +100,7 @@ export const Hero = () => {
               Hi, I'm <span className="text-indigo-400">Shashank Singh</span>
             </h1>
             <p className="text-xl text-zinc-400 mb-8 max-w-lg">
-              B.Tech IT Student at VIT. AI/ML Enthusiast and Full-Stack Developer passionate about building intelligent systems and scalable web applications.
+              Final-year IT undergraduate at VIT with 3 internships and 3 deployed products under my belt. I build full-stack across React/Node.js and Python/FastAPI, with real depth in ML.
             </p>
             <div className="flex flex-wrap gap-4">
               <motion.a
@@ -129,6 +129,9 @@ export const Hero = () => {
               </a>
               <a href="https://linkedin.com/in/shashank-singh-995a4727b" target="_blank" className="hover:text-white transition-colors">
                 <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="https://leetcode.com/u/Shan0945/" target="_blank" className="hover:text-white transition-colors" title="LeetCode">
+                <Code2 className="w-6 h-6" />
               </a>
             </div>
           </motion.div>
@@ -251,16 +254,44 @@ export const Skills = () => {
   );
 };
 
+type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  points: string[];
+  certificate?: string;
+};
+
 export const Experience = () => {
-  const experiences = [
+  const experiences: Experience[] = [
+    {
+      company: "KrishAI",
+      role: "Software Development Intern (Remote)",
+      period: "May 2026 – Jul 2026",
+      points: [
+        "Shipped 15+ full-stack features across 6 Agile sprints (React.js, Node.js, REST APIs), clearing frontend/backend bottlenecks.",
+        "Reduced application response time by ~30% by refactoring core modules for concurrent-load handling.",
+        "Integrated ML models into production workflows, improving data-pipeline efficiency by ~25%."
+      ],
+      certificate: "/krishai-certificate.pdf"
+    },
     {
       company: "Sooru.AI",
       role: "Software Development Intern",
       period: "Jun 2025 – Oct 2025",
       points: [
-        "Developed 3D visualizations using React and Three.js, achieving a 15% reduction in load times.",
-        "Optimized frontend architecture by refactoring 20+ components into a reusable library.",
-        "Reduced initial JavaScript payload by 28% through code-splitting and efficient asset bundling."
+        "Developed interactive 3D visualizations with React and Three.js, cutting load times 15% and lifting session duration 12%.",
+        "Modularized the frontend architecture into 20+ reusable components, reducing duplicate code by 25%.",
+        "Optimized REST API consumption with backend teams, shrinking initial JavaScript payload by 28%."
+      ],
+      certificate: "/sooru-certificate.pdf"
+    },
+    {
+      company: "Team WellEx — ONGC Udbhav Initiative",
+      role: "ML Contributor (Independent, Part-time)",
+      period: "Jul 2026",
+      points: [
+        "Prototyped regression pipelines in Python and Scikit-learn across 10+ geological attributes to estimate oil-gain potential, contributing to system-design discussions with an independent ONGC team."
       ]
     }
   ];
@@ -287,6 +318,17 @@ export const Experience = () => {
                 <span className="text-sm font-medium text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">{exp.period}</span>
               </div>
               <p className="text-zinc-500 font-medium mb-4 italic">{exp.role}</p>
+              {exp.certificate && (
+                <a
+                  href={exp.certificate}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-semibold text-indigo-400 hover:text-indigo-300 -mt-2 mb-4 transition-colors"
+                >
+                  <FileText className="w-3.5 h-3.5 mr-1.5" />
+                  View Completion Certificate
+                </a>
+              )}
               <ul className="space-y-3">
                 {exp.points.map((point, i) => (
                   <li key={i} className="text-zinc-400 flex items-start">
@@ -303,8 +345,31 @@ export const Experience = () => {
   );
 };
 
+type Project = {
+  title: string;
+  tech: string;
+  description: string;
+  image: string;
+  featured?: boolean;
+  liveNote?: string;
+  links: { github?: string; live?: string; kaggle?: string };
+};
+
 export const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
+    {
+      title: "HALO-OT: AI-Powered Industrial Security Platform",
+      tech: "Python, FastAPI, Isolation Forest, Random Forest, SQLite",
+      description: "Built a cyber-physical anomaly detection platform for industrial (OT) environments that fuses digital access logs with physical badge data, using Isolation Forest and Random Forest to catch insider threats and ICS attacks in real time at 0.97 precision.",
+      image: "/halo-ot.png",
+      featured: true,
+      liveNote: "(takes 1-2 mins to startup)",
+      links: {
+        github: "https://github.com/SHAN0945/halo-ot",
+        live: "https://halo-ot.onrender.com/",
+        kaggle: "https://www.kaggle.com/code/shashanksingh0945/shan-s-halo-project"
+      }
+    },
     {
       title: "NanoScan: AI-Powered PCB Defect Detection",
       tech: "Next.js, FastAPI, PyTorch, XGBoost, TypeScript, MongoDB",
@@ -371,11 +436,21 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-zinc-950 rounded-2xl overflow-hidden border border-zinc-800 shadow-sm hover:shadow-xl transition-all group"
+              className={`bg-zinc-950 rounded-2xl overflow-hidden border shadow-sm hover:shadow-xl transition-all group ${
+                project.featured
+                  ? "border-indigo-500/40 ring-1 ring-indigo-500/20 shadow-lg shadow-indigo-900/10"
+                  : "border-zinc-800"
+              }`}
             >
-              <div className="h-48 bg-zinc-900 relative overflow-hidden">
-                <img 
-                  src={project.image} 
+              <div className={`bg-zinc-900 relative overflow-hidden ${project.featured ? "h-56 md:h-64" : "h-48"}`}>
+                {project.featured && (
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-lg">
+                    <Star className="w-3 h-3 fill-current" />
+                    Flagship Project
+                  </div>
+                )}
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-60 group-hover:opacity-100"
                   referrerPolicy="no-referrer"
@@ -383,7 +458,7 @@ export const Projects = () => {
                 <div className="absolute inset-0 bg-indigo-500/10 group-hover:bg-transparent transition-colors"></div>
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">{project.title}</h3>
+                <h3 className={`font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors ${project.featured ? "text-xl" : "text-lg"}`}>{project.title}</h3>
                 <p className="text-sm text-zinc-500 mb-4 line-clamp-3">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.split(', ').map(t => (
@@ -392,16 +467,24 @@ export const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <div className="flex space-x-4">
+                <div className="flex items-center space-x-4">
                   <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors">
                     <Github className="w-5 h-5" />
                   </a>
                   {project.links.live && (
-                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-400 transition-colors">
+                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-400 transition-colors" title="Live Demo">
                       <ExternalLink className="w-5 h-5" />
                     </a>
                   )}
+                  {project.links.kaggle && (
+                    <a href={project.links.kaggle} target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-indigo-400 transition-colors" title="Kaggle Notebook">
+                      <Database className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
+                {project.liveNote && (
+                  <p className="text-[11px] text-zinc-600 mt-2">{project.liveNote}</p>
+                )}
               </div>
             </motion.div>
           ))}
@@ -418,7 +501,7 @@ export const Leadership = () => {
     period: "Dec 2025 – Present",
     image: "/chair.jpeg",
     points: [
-      "Directing a chapter of 100+ members, managing project timelines and budget allocation.",
+      "Directing a chapter of 500+ members, managing project timelines and budget allocation.",
       "Increased student engagement by 20% through a peer-to-peer mentorship framework.",
       "Facilitated technical requirement gatherings between design and development teams."
     ]
@@ -590,6 +673,9 @@ export const Contact = () => {
           </a>
           <a href="https://linkedin.com/in/shashank-singh-995a4727b" target="_blank" className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl text-zinc-400 hover:text-white hover:border-indigo-500 transition-all">
             <Linkedin className="w-8 h-8" />
+          </a>
+          <a href="https://leetcode.com/u/Shan0945/" target="_blank" className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl text-zinc-400 hover:text-white hover:border-indigo-500 transition-all" title="LeetCode">
+            <Code2 className="w-8 h-8" />
           </a>
         </div>
       </div>
